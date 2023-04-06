@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+body {
+  
+  box-sizing: border-box;
+  background-color: #d9d7d3;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  margin: 1rem 2rem;
+  max-width: 1100px;
 }
+.header {
+  max-width: 1100px;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  background-color: #fff;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-group {
+  margin: 10px;
   display: flex;
   flex-direction: column;
+}
+.form-group > label {
+  color: #777;
+  font-size: 13px;
+}
+.btn {
+  background-color: rgb(135, 222, 241);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 13px;
+  padding: 3px 10px;
+}
+.btn:hover {
+  background-color: rgb(34, 192, 227);
+}
+
+.card-grid {
+  display: grid;
+  gap: 15px;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.card {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
 
-.App-link {
-  color: #61dafb;
+  transform-style: preserve-3d;
+  background-color: #fff;
+  transition: all 0.2s;
+  cursor: pointer;
+  transform: perspective(1000px) rotateY(var(--rotateY, 0))
+    translateY(var(--translateY, 0));
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card:hover {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.6);
+  --translateY: -3px;
+}
+.card .front,
+.card .back {
+  position: absolute;
+  padding: 10px;
+  backface-visibility: hidden;
+}
+.card .front {
+  left: 0;
+}
+.card.flip {
+  --rotateY: 180deg;
+}
+.card .back {
+  transform: rotateY(180deg);
+}
+.flashcard-options {
+  margin-top: 10px;
+}
+.flashcard-option {
+  font-size: 13px;
+  color: #555;
+  margin-top: 10px;
 }
