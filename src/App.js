@@ -49,39 +49,41 @@ function App() {
   }
   return (
     <>
-      <form className="header" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select id="category" ref={selectEl}>
-            {categories.map((category) => {
-              return (
-                <option value={category.id} key={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-          </select>
+      <div className="wrapper">
+        <form className="header" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <select id="category" ref={selectEl}>
+              {categories.map((category) => {
+                return (
+                  <option value={category.id} key={category.id}>
+                    {category.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="amount">Number of Questions</label>
+            <input
+              type="number"
+              defaultValue={10}
+              min={1}
+              max={50}
+              step={1}
+              id="amount"
+              ref={amountEl}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn">
+              Generate
+            </button>
+          </div>
+        </form>
+        <div className="container">
+          <FlashCardList flashCards={flashCards} />
         </div>
-        <div className="form-group">
-          <label htmlFor="amount">Number of Questions</label>
-          <input
-            type="number"
-            defaultValue={10}
-            min={1}
-            max={50}
-            step={1}
-            id="amount"
-            ref={amountEl}
-          />
-        </div>
-        <div className="form-group">
-          <button type="submit" className="btn">
-            Generate
-          </button>
-        </div>
-      </form>
-      <div className="container">
-        <FlashCardList flashCards={flashCards} />
       </div>
     </>
   );
